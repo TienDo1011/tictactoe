@@ -1,6 +1,7 @@
-## Example calculator app built with reactjs, redux & HMR enabled
+## Example calculator app
 
-A basic calculator written with Javascript (ES2015), React.js & Redux.
+`HMR Enabled`
+A basic calculator written with Javascript (ES2015), React.js, Redux, Immutable & Webpack.
 
 It doesn't do anything special, beyond what a normal calculator does.  It's just a simple demo to show how the technologies work together.
 
