@@ -16,7 +16,6 @@
     "babel-preset-react": "^6.11.1",
     "babel-preset-stage-2": "^6.13.0",
     "css-loader": "^0.23.1",
-    "extract-text-webpack-plugin": "^2.0.0-rc.3",
     "postcss-loader": "^0.9.1",
     "react-hot-loader": "^3.0.0-beta.6",
     "style-loader": "^0.13.1",

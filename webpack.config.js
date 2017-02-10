@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: [
@@ -55,18 +54,16 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        // use: [
-        //   'style-loader',
-        //   'css-loader?modules',
-        //   'postcss-loader',
-        // ],
-        use: ExtractTextPlugin.extract(['style-loader', 'css-loader', 'postcss-loader'])
-      },
+        use: [
+          'style-loader',
+          'css-loader?modules',
+          'postcss-loader',
+        ]
+      }
     ],
   },
 
   plugins: [
-    new ExtractTextPlugin('css/styles.css'),
     new webpack.HotModuleReplacementPlugin(),
     // enable HMR globally
 
