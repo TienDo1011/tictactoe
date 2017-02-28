@@ -1,37 +1,45 @@
-function addOperation(operation) {
-    return { type: 'ADD_OPERATION', operation }
-}
+export const setPomodoroLength = (l) => ({ type: 'SET_POMODORO_LENGTH', length: l})
+export const setBreakLength = (l) => ({ type: 'SET_BREAK_LENGTH', length: l})
+export const setActivityType = (t) => ({type: 'SET_ACTIVITY_TYPE', activity_type: t})
 
-function addNumber(number) {
-    return { type: 'ADD_NUMBER', number }
-}
+export const startTimer = (t) => ({
+  type: 'START_TIMER',
+  timer: {
+    is_active: true,
+    time: t
+  }
+})
 
-function calculate(input) {
-  return { type: 'CALCULATE' , inputData: input}
-}
+export const pauseTimer = (t) => ({
+  type: 'PAUSE_TIMER',
+  timer: {
+    paused: true,
+    is_active: false,
+    time: t
+  }
+})
 
-function showMemories() {
-  return { type: 'SHOW_MEMORIES' }
-}
+export const clearTimer = (t) => ({
+  type: 'CLEAR_TIMER',
+  timer: {
+    is_active: false,
+    paused: false,
+    time: t
+  }
+})
 
-function clear() {
-  return { type: 'CLEAR' }
-}
+export const tickTimer = (t) => ({
+  type: 'TICK_TIMER',
+  timer: {
+    time: t
+  }
+})
 
-function undo() {
-  return { type: 'UNDO' }
-}
 
-function toggleMemories() {
-  return { type: 'TOGGLE_MEMORIES' }
-}
-
-export {
-    addOperation,
-    addNumber,
-    calculate,
-    showMemories,
-    clear,
-    undo,
-    toggleMemories
-}
+export const finishTimer = (t) => ({
+  type: 'FINISH_TIMER',
+  timer: {
+    is_finished: true
+    time: t
+  }
+})

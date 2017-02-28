@@ -1,27 +1,39 @@
-// ./src/index.js
+/**
+state = {
+  breakLength:        (5min / 60000) [time in miliseconds]
+  pomodoroLength:     (25min / 60000) [time in miliseconds]
+  activity_type:      'p' [string] p/b
+  timer:              object
+    is_active:        false [bool]
+    is_finished:      false [bool]
+    paused:           false [bool]
+    time:             (0) [time in miliseconds] || -1
+}
+ */
+
+import { createStore, combineReducers } from 'redux'
+import * as reducers from './reducers'
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import App from './components/containers/App'
 
-import { AppContainer } from 'react-hot-loader';
-// AppContainer is a necessary wrapper component for HMR
+const store = createStore(
+  combineReducers({
+    breakLength: reducers.breakLength,
+    pomodoroLength: reducers.pomodoroLength,
+    activity_type: reducers.activity_type,
+    timer: reducers.timer
+  })
+);
 
-import App from './containers/App';
-import store from './store'
-
-const render = (Component) => {
+const render = () => {
   ReactDOM.render(
-    <AppContainer>
-      <Component store={store}/>
-    </AppContainer>,
+    <Provider store={store}>
+      <App />
+    </Provider>
     document.getElementById('root')
   );
 };
 
-render(App);
-
-// Hot Module Replacement API
-if (module.hot) {
-  module.hot.accept('./containers/App', () => {
-    render(App)
-  });
-}
+render();
