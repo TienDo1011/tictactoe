@@ -1,15 +1,15 @@
 Buttons:
   state:
     timer.is_active
-    timer.is_finished
-    activity_type
+    # timer.is_finished
+    # activity_type
   action:
     startTimer
     pauseTimer
     clearTimer
 LengthSetters:
   state:
-    timer.is_active || timer.paused
+    #timer.is_active || timer.paused
     breakLength
     pomodoroLength
   action:
@@ -17,14 +17,14 @@ LengthSetters:
     setBreakLength
 Clock:
   state:
-    activity_type
+    # activity_type
     timer.time
-    timer.is_finished
-    timer.paused
+    # timer.is_finished
+    # timer.paused
   action:
     setActivityType
-    tickTimer
-    finishTimer
+    # tickTimer
+    # finishTimer
 
 
 Store:

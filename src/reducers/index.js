@@ -51,7 +51,7 @@ export const timer = (state = timerInitState, action) => {
     case 'CLEAR_TIMER':
       return {
         is_active: action.timer.is_active,
-        is_finished: state.is_finished,
+        is_finished: action.timer.is_finished,
         paused: action.timer.paused,
         time: Number(action.timer.time)
       }

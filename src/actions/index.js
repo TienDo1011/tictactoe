@@ -19,12 +19,13 @@ export const pauseTimer = (t) => ({
   }
 })
 
-export const clearTimer = (t) => ({
+export const clearTimer = () => ({
   type: 'CLEAR_TIMER',
   timer: {
     is_active: false,
+    is_finished: false,
     paused: false,
-    time: t
+    time: (25 * 60000)
   }
 })
 
