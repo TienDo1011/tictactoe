@@ -20,12 +20,13 @@ class Buttons extends Component {
 
   _clearTimer() {
     const p = this.props
-    p.clearTimer()
+    p.clearTimer(p.pomodoroLength)
   }
 
   render() {
-    const callback = (this.props.is_active) ? this._pauseTimer : this._startTimer
-    const text = (this.props.is_active) ? 'Pause' : 'Start'
+    const is_active = this.props.timer.is_active
+    const callback = (is_active) ? this._pauseTimer : this._startTimer
+    const text = (is_active) ? 'Pause' : 'Start'
     return (
       <section>
         <button onClick={callback}>{text}</button>

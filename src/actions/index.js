@@ -25,7 +25,7 @@ export const clearTimer = () => ({
     is_active: false,
     is_finished: false,
     paused: false,
-    time: (25 * 60000)
+    time: 0
   }
 })
 
@@ -37,10 +37,10 @@ export const tickTimer = (t) => ({
 })
 
 
-export const finishTimer = (t) => ({
+export const finishTimer = () => ({
   type: 'FINISH_TIMER',
   timer: {
-    is_finished: true
-    time: t
+    is_finished: true,
+    time: 0
   }
 })
