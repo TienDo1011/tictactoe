@@ -10,7 +10,9 @@ class Buttons extends Component {
 
   _startTimer() {
     const p = this.props
-    p.startTimer(p.timer.time)
+    let activityType = (p.activity_type == "p") ? p.pomodoroLength : p.breakLength
+    let time = p.timer.time || activityType
+    p.startTimer(time)
   }
 
   _pauseTimer() {
@@ -20,10 +22,11 @@ class Buttons extends Component {
 
   _clearTimer() {
     const p = this.props
-    p.clearTimer(p.pomodoroLength)
+    p.clearTimer()
   }
 
   render() {
+    const p = this.props
     const is_active = this.props.timer.is_active
     const callback = (is_active) ? this._pauseTimer : this._startTimer
     const text = (is_active) ? 'Pause' : 'Start'

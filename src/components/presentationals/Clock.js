@@ -14,11 +14,16 @@ class Clock extends Component {
 
   render() {
     const p = this.props
+    let activityType = (p.activity_type == "p") ? p.pomodoroLength : p.breakLength
+    let time = p.timer.time || activityType
+    // console.log(time);
+    const mins = Math.floor(time / 60)
+    const secs = (time % 60)
     return (
       <section>
         <button onClick={this._setActivityType}>P</button>
         <button onClick={this._setActivityType}>B</button>
-        <h2>{p.timer.time}</h2>
+        <h2>{mins}:{secs}</h2>
       </section>
     )
   }

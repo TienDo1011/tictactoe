@@ -10,21 +10,25 @@ class Setter extends Component {
 
   _increment() {
     const p = this.props
-    p.setLength(p.length + 60000)
+    p.setActivityType(p.children.charAt(0).toLowerCase())
+    p.setLength(p.length + 60)
   }
 
   _decrement() {
     const p = this.props
-    p.setLength(p.length - 60000)
+    p.setActivityType(p.children.charAt(0).toLowerCase())
+    p.setLength(p.length - 60)
   }
 
   render() {
+    const p = this.props
+    const length = p.length / 60
     return (
       <section>
-        <h3>{this.props.children}:</h3>
+        <h3>{p.children}:</h3>
         <button onClick={this._increment}>+</button>
         <button onClick={this._decrement}>-</button>
-        <span>{this.props.length} mins</span>
+        <span>{length} mins</span>
       </section>
     )
   }

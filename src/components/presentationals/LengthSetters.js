@@ -6,10 +6,14 @@ class LengthSetters extends Component {
     const p = this.props
     return (
       <section>
-        <Setter length={p.pomodoroLength} setLength={p.setPomodoroLength}>
+        <Setter length={p.pomodoroLength} setLength={p.setPomodoroLength}
+          setActivityType={p.setActivityType}
+        >
           Pomodoro
         </Setter>
-        <Setter length={p.breakLength} setLength={p.setBreakLength}>
+        <Setter length={p.breakLength} setLength={p.setBreakLength}
+          setActivityType={p.setActivityType}
+        >
           Break
         </Setter>
       </section>

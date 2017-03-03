@@ -35,11 +35,12 @@ class App extends Component {
   componentDidUpdate() {
     const p = this.props
     const t = this
-    let counter = p.timer.time
     const length = (p.activity_type == "p") ? p.breakLength : p.pomodoroLength
+    let counter = p.timer.time || length
+    console.log(counter);
     const startTimeout = () => {
       setTimeout(() => {
-        counter = counter - t.ONE_SEC
+        counter = counter - 1
         if (counter === 0) {
           let type = (p.activity_type == "p") ? "b" : "p"
           p.finishTimer()
@@ -65,14 +66,19 @@ class App extends Component {
     return (
       <section>
         <Buttons pomodoroLength={p.pomodoroLength}
+          breakLength={p.breakLength}
           timer={p.timer} startTimer={p.startTimer}
           pauseTimer={p.pauseTimer} clearTimer={p.clearTimer}
+          activity_type={p.activity_type}
         />
         <LengthSetters pomodoroLength={p.pomodoroLength}
           breakLength={p.breakLength} setPomodoroLength={p.setPomodoroLength}
-          setBreakLength={p.setBreakLength}
+          setBreakLength={p.setBreakLength} setActivityType={p.setActivityType}
         />
-        <Clock setActivityType={p.setActivityType} timer={p.timer} />
+        <Clock setActivityType={p.setActivityType} timer={p.timer}
+          pomodoroLength={p.pomodoroLength} breakLength={p.breakLength}
+          activity_type={p.activity_type}
+        />
       </section>
     )
   }

@@ -5,6 +5,7 @@ Buttons:
     # activity_type
   action:
     startTimer
+      
     pauseTimer
     clearTimer
 LengthSetters:
