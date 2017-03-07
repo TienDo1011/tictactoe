@@ -35,13 +35,13 @@ class App extends Component {
 
   constructor() {
     super()
-    this.ONE_SEC = 100
+    this.ONE_SEC = 500
   }
 
   componentDidUpdate() {
     const p = this.props
     const t = this
-    const length = (p.activity_type == "p") ? p.breakLength : p.pomodoroLength
+    const length = (p.activity_type == "p") ? p.pomodoroLength : p.breakLength
     let counter = p.timer.time || length
     const startTimeout = () => {
       setTimeout(() => {
@@ -57,11 +57,29 @@ class App extends Component {
     }
 
     if(p.timer.is_finished) {
-      p.clearTimer()
-      setTimeout(() => {
-        p.startTimer(length)
-        p.setIterated(p.iterated + 0.5);
-      }, t.ONE_SEC)
+      // p.clearTimer()
+      console.log('run here!!!');
+      if (p.iterated == (p.iteration - 1)) {
+        setTimeout(() => {
+          p.startTimer(p.longBreakLength)
+          p.setIterated(p.iterated + 0.5);
+        }, t.ONE_SEC)
+      } else if (p.iterated == (p.iteration - 0.5)) {
+        setTimeout(() => {
+          const length = (p.activity_type == "p") ? p.breakLength : p.pomodoroLength
+          console.log('1: iterated: ' + p.iterated + 'length:' + length);
+          p.startTimer(length)
+          p.setIterated(0);
+        }, t.ONE_SEC)
+      } else {
+        console.log('get inside');
+        setTimeout(() => {
+          const length = (p.activity_type == "p") ? p.breakLength : p.pomodoroLength
+          console.log('2: iterated: ' + p.iterated + 'length:' + length);
+          p.startTimer(length)
+          p.setIterated(p.iterated + 0.5);
+        }, t.ONE_SEC)
+      }
       // console.log(p.iterated);
       // console.log(p.timer);
     }

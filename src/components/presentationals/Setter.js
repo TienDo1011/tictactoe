@@ -11,7 +11,7 @@ class Setter extends Component {
   _increment() {
     const p = this.props
     if(p.children.charAt(0).toLowerCase() !== "b"
-        || p.children.charAt(0).toLowerCase() !== "p") {
+        && p.children.charAt(0).toLowerCase() !== "p") {
           p.setActivityType("p")
     } else {
       p.setActivityType(p.children.charAt(0).toLowerCase())
@@ -22,7 +22,7 @@ class Setter extends Component {
   _decrement() {
     const p = this.props
     if(p.children.charAt(0).toLowerCase() !== "b"
-        || p.children.charAt(0).toLowerCase() !== "p") {
+        && p.children.charAt(0).toLowerCase() !== "p") {
           p.setActivityType("p")
     } else {
       p.setActivityType(p.children.charAt(0).toLowerCase())

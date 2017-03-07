@@ -14,7 +14,7 @@ export const longBreakLength = (state = (2 * 60), action) => {
       return state;
   }
 }
-export const iteration = (state = 4, action) => {
+export const iteration = (state = 2, action) => {
   switch (action.type) {
     case 'SET_ITERATION':
       return action.time;
@@ -26,6 +26,8 @@ export const iterated = (state = 0, action) => {
   switch (action.type) {
     case 'SET_ITERATED':
       return action.time;
+    case 'CLEAR_TIMER':
+      return 0;
     default:
       return state;
   }
