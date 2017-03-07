@@ -5,7 +5,7 @@ Buttons:
     # activity_type
   action:
     startTimer
-      
+
     pauseTimer
     clearTimer
 LengthSetters:
@@ -13,9 +13,16 @@ LengthSetters:
     #timer.is_active || timer.paused
     breakLength
     pomodoroLength
+
+    longBreakLength
+    iterated/iteration
   action:
     setPomodoroLength
     setBreakLength
+
+    setLongBreakLength
+    setIteration
+    setIterated
 Clock:
   state:
     # activity_type

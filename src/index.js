@@ -1,6 +1,9 @@
 /**
 state = {
   breakLength:        (5min / 60000) [time in miliseconds]
+  longBreakLength:        (5min / 60000) [time in miliseconds]
+  iteration:        (4 times)
+  iterated:         (times)
   pomodoroLength:     (25min / 60000) [time in miliseconds]
   activity_type:      'p' [string] p/b
   timer:              object
@@ -21,6 +24,9 @@ import App from './components/containers/App'
 const store = createStore(
   combineReducers({
     breakLength: reducers.breakLength,
+    longBreakLength: reducers.longBreakLength,
+    iteration: reducers.iteration,
+    iterated: reducers.iterated,
     pomodoroLength: reducers.pomodoroLength,
     activity_type: reducers.activity_type,
     timer: reducers.timer
