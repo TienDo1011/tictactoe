@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Grid } from 'react-bootstrap';
 import { connect } from 'react-redux'
 import { setPomodoroLength, setBreakLength, setLongBreakLength, setIteration, setActivityType,
          setIterated, startTimer, tickTimer, pauseTimer, clearTimer, finishTimer
@@ -35,30 +36,35 @@ class App extends Component {
 
   constructor() {
     super()
-    this.ONE_SEC = 500
+    this.ONE_SEC = 200
+    this.counter
+    this.alarmSound = new Audio('https://cdn.rawgit.com/Cu7ious/React-n-Redux-Pomodoro-Clock/0697fb10e56f3cb79a13e7063aa400010d43adf8/assets/sounds/Alarm-clock-sound-short.mp3') // 00:02
   }
 
   componentDidUpdate() {
     const p = this.props
     const t = this
-    const length = (p.activity_type == "p") ? p.pomodoroLength : p.breakLength
-    let counter = p.timer.time || length
+    const timer = this.props.timer
+    const length = (p.activity_type == "p") ? p.breakLength : p.pomodoroLength
+
     const startTimeout = () => {
       setTimeout(() => {
-        counter = counter - 1
-        if (counter === 0) {
+        t.counter = t.counter - 1
+        if (t.counter === 0) {
           let type = (p.activity_type == "p") ? "b" : "p"
           p.finishTimer()
           p.setActivityType(type)
+          t.alarmSound.play()
         } else {
-          p.tickTimer(counter)
+          p.tickTimer(t.counter)
         }
       }, t.ONE_SEC)
     }
 
-    if(p.timer.is_finished) {
+    if(timer.is_finished) {
       // p.clearTimer()
       console.log('run here!!!');
+      p.clearTimer()
       if (p.iterated == (p.iteration - 1)) {
         setTimeout(() => {
           p.startTimer(p.longBreakLength)
@@ -66,7 +72,6 @@ class App extends Component {
         }, t.ONE_SEC)
       } else if (p.iterated == (p.iteration - 0.5)) {
         setTimeout(() => {
-          const length = (p.activity_type == "p") ? p.breakLength : p.pomodoroLength
           console.log('1: iterated: ' + p.iterated + 'length:' + length);
           p.startTimer(length)
           p.setIterated(0);
@@ -74,10 +79,10 @@ class App extends Component {
       } else {
         console.log('get inside');
         setTimeout(() => {
-          const length = (p.activity_type == "p") ? p.breakLength : p.pomodoroLength
           console.log('2: iterated: ' + p.iterated + 'length:' + length);
           p.startTimer(length)
           p.setIterated(p.iterated + 0.5);
+          console.log('run here');
         }, t.ONE_SEC)
       }
       // console.log(p.iterated);
@@ -85,6 +90,8 @@ class App extends Component {
     }
 
     if (p.timer.is_active) {
+      let length = (p.activity_type == "p") ? p.pomodoroLength : p.breakLength
+      this.counter = (timer.time == 0) ? length : timer.time
       startTimeout()
     }
   }
@@ -93,23 +100,28 @@ class App extends Component {
     const p = this.props
     return (
       <section>
-        <Buttons pomodoroLength={p.pomodoroLength}
-          breakLength={p.breakLength}
-          timer={p.timer} startTimer={p.startTimer}
-          pauseTimer={p.pauseTimer} clearTimer={p.clearTimer}
-          activity_type={p.activity_type}
-        />
-        <LengthSetters pomodoroLength={p.pomodoroLength} breakLength={p.breakLength}
-          longBreakLength={p.longBreakLength} iteration={p.iteration}
-          iterated={p.iterated}
-          setPomodoroLength={p.setPomodoroLength} setBreakLength={p.setBreakLength}
-          setLongBreakLength={p.setLongBreakLength} setIteration={p.setIteration}
-          setActivityType={p.setActivityType}
-        />
-        <Clock setActivityType={p.setActivityType} timer={p.timer}
-          pomodoroLength={p.pomodoroLength} breakLength={p.breakLength}
-          activity_type={p.activity_type}
-        />
+        <Grid>
+          <Buttons pomodoroLength={p.pomodoroLength}
+            breakLength={p.breakLength}
+            timer={p.timer} startTimer={p.startTimer}
+            pauseTimer={p.pauseTimer} clearTimer={p.clearTimer}
+            activity_type={p.activity_type}
+            sounds={{
+              alarm: this.alarmSound
+            }}
+          />
+          <LengthSetters pomodoroLength={p.pomodoroLength} breakLength={p.breakLength}
+            longBreakLength={p.longBreakLength} iteration={p.iteration}
+            iterated={p.iterated}
+            setPomodoroLength={p.setPomodoroLength} setBreakLength={p.setBreakLength}
+            setLongBreakLength={p.setLongBreakLength} setIteration={p.setIteration}
+            setActivityType={p.setActivityType}
+          />
+          <Clock setActivityType={p.setActivityType} timer={p.timer}
+            pomodoroLength={p.pomodoroLength} breakLength={p.breakLength}
+            activity_type={p.activity_type}
+          />
+        </Grid>
       </section>
     )
   }

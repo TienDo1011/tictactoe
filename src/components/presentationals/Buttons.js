@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button, ButtonGroup, Row, Col } from 'react-bootstrap';
 
 class Buttons extends Component {
   constructor() {
@@ -23,6 +24,7 @@ class Buttons extends Component {
   _clearTimer() {
     const p = this.props
     p.clearTimer()
+    p.sounds.alarm.pause()
   }
 
   render() {
@@ -32,8 +34,22 @@ class Buttons extends Component {
     const text = (is_active) ? 'Pause' : 'Start'
     return (
       <section>
-        <button onClick={callback}>{text}</button>
-        <button onClick={this._clearTimer}>Clear</button>
+        <Row>
+          <Col>
+            <h1>Pomodore Clock as your wish</h1>
+            <br />
+            <hr />
+            <br />
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <ButtonGroup>
+              <Button bsStyle="primary" bsSize="large" onClick={callback}>{text}</Button>
+              <Button bsStyle="danger" bsSize="large" onClick={this._clearTimer}>Clear</Button>
+            </ButtonGroup>
+          </Col>
+        </Row>
       </section>
     )
   }

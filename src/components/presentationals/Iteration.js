@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button, ButtonGroup } from 'react-bootstrap';
 
 class Iteration extends Component {
 
@@ -26,8 +27,10 @@ class Iteration extends Component {
     return (
       <section>
         <h3>{p.children}:</h3>
-        <button onClick={this._increment}>+</button>
-        <button onClick={this._decrement}>-</button>
+        <ButtonGroup>
+          <Button bsStyle="info" onClick={this._increment}>+</Button>
+          <Button bsStyle="info" onClick={this._decrement}>-</Button>
+        </ButtonGroup>
         <span> {Math.floor(p.iterated)} / {length} times</span>
       </section>
     )
