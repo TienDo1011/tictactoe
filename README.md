@@ -1,6 +1,7 @@
 ## Pomodoro app
 
 A basic pomodoro written with Javascript (ES2015), React.js, Redux & Webpack.
+
 Function:
 
 * Set break time
