@@ -9,32 +9,33 @@ class LengthSetters extends Component {
     return (
       <section>
           <Row>
-            <Col xs={12} md={6}>
+            <Col xsOffset={2} xs={4}>
               <Setter length={p.pomodoroLength} setLength={p.setPomodoroLength}
-                setActivityType={p.setActivityType}
+                setActivityType={p.setActivityType} min={60}
               >
                 Pomodoro
               </Setter>
             </Col>
-            <Col xs={12} md={6}>
+            <Col xs={4}>
               <Iteration length={p.iteration} setLength={p.setIteration}
                 setActivityType={p.setActivityType} iterated={p.iterated}
+                min={2}
               >
                 Repeat
               </Iteration>
             </Col>
           </Row>
           <Row>
-            <Col xs={6}>
+            <Col xsOffset={2} xs={4}>
               <Setter length={p.breakLength} setLength={p.setBreakLength}
-                setActivityType={p.setActivityType}
+                setActivityType={p.setActivityType} min={60}
               >
                 Break
               </Setter>
             </Col>
-            <Col xs={6}>
+            <Col xs={4}>
               <Setter length={p.longBreakLength} setLength={p.setLongBreakLength}
-                setActivityType={p.setActivityType}
+                setActivityType={p.setActivityType} min={60}
               >
                 Long Break
               </Setter>

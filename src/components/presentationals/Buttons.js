@@ -43,7 +43,7 @@ class Buttons extends Component {
           </Col>
         </Row>
         <Row>
-          <Col>
+          <Col xsOffset={4}>
             <ButtonGroup>
               <Button bsStyle="primary" bsSize="large" onClick={callback}>{text}</Button>
               <Button bsStyle="danger" bsSize="large" onClick={this._clearTimer}>Clear</Button>

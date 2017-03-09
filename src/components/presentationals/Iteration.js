@@ -18,7 +18,7 @@ class Iteration extends Component {
   _decrement() {
     const p = this.props
     p.setActivityType("p")
-    p.setLength(p.length - 1)
+    if(p.length > p.min) p.setLength(p.length - 1)
   }
 
   render() {

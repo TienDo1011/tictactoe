@@ -38,6 +38,7 @@ class App extends Component {
     super()
     this.ONE_SEC = 200
     this.counter
+    this.timeout
     this.alarmSound = new Audio('https://cdn.rawgit.com/Cu7ious/React-n-Redux-Pomodoro-Clock/0697fb10e56f3cb79a13e7063aa400010d43adf8/assets/sounds/Alarm-clock-sound-short.mp3') // 00:02
   }
 
@@ -48,7 +49,7 @@ class App extends Component {
     const length = (p.activity_type == "p") ? p.breakLength : p.pomodoroLength
 
     const startTimeout = () => {
-      setTimeout(() => {
+      t.timeout = setTimeout(() => {
         t.counter = t.counter - 1
         if (t.counter === 0) {
           let type = (p.activity_type == "p") ? "b" : "p"
@@ -65,22 +66,25 @@ class App extends Component {
       // p.clearTimer()
       console.log('run here!!!');
       p.clearTimer()
+      if(p.iterated == 0) {
+        this.ONE_SEC = this.ONE_SEC * 2
+      }
       if (p.iterated == (p.iteration - 1)) {
         setTimeout(() => {
-          p.startTimer(p.longBreakLength)
+          p.startTimer(p.longBreakLength);
           p.setIterated(p.iterated + 0.5);
         }, t.ONE_SEC)
       } else if (p.iterated == (p.iteration - 0.5)) {
         setTimeout(() => {
           console.log('1: iterated: ' + p.iterated + 'length:' + length);
-          p.startTimer(length)
+          p.startTimer(length);
           p.setIterated(0);
         }, t.ONE_SEC)
       } else {
         console.log('get inside');
         setTimeout(() => {
           console.log('2: iterated: ' + p.iterated + 'length:' + length);
-          p.startTimer(length)
+          p.startTimer(length);
           p.setIterated(p.iterated + 0.5);
           console.log('run here');
         }, t.ONE_SEC)

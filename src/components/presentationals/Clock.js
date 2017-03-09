@@ -20,18 +20,19 @@ class Clock extends Component {
     const mins = Math.floor(time / 60)
     const secs = (time % 60)
     const color = (p.activity_type == "p") ? "success" : "warning"
-    const pomodoreIsActive = (p.activity_type == "p") ? "success" : ""
-    const breakIsActive = (p.activity_type == "b") ? "success" : ""
+    const pomodoreIsActive = (p.activity_type == "p") ? "success" : "default"
+    const breakIsActive = (p.activity_type == "b") ? "success" : "default"
     return (
       <section>
         <Row>
-          <Col xs={8}>
-            <Button bsSize="large" bsStyle={color}>{mins}:{secs}</Button>
+          <br />
+          <Col xsOffset={4} xs={2}>
+            <Button bsSize="lg" bsStyle={color}>{mins}:{secs}</Button>
           </Col>
-          <Col xs={4}>
-            <ButtonGroup>
-              <Button bsStyle={pomodoreIsActive} onClick={this._setActivityType}>P</Button>
-              <Button bsStyle={breakIsActive} onClick={this._setActivityType}>B</Button>
+          <Col xs={2}>
+            <ButtonGroup vertical>
+              <Button bsSize="xs" bsStyle={pomodoreIsActive} onClick={this._setActivityType}>P</Button>
+              <Button bsSize="xs" bsStyle={breakIsActive} onClick={this._setActivityType}>B</Button>
             </ButtonGroup>
           </Col>
         </Row>

@@ -28,7 +28,7 @@ class Setter extends Component {
     } else {
       p.setActivityType(p.children.charAt(0).toLowerCase())
     }
-    p.setLength(p.length - 60)
+    if(p.length > p.min) p.setLength(p.length - 60)
   }
 
   render() {
