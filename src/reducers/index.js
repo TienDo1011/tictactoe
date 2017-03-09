@@ -1,4 +1,4 @@
-export const breakLength = (state = (1 * 60), action) => {
+export const breakLength = (state = (5 * 60), action) => {
   switch (action.type) {
     case 'SET_BREAK_LENGTH':
       return action.length;
@@ -33,7 +33,7 @@ export const iterated = (state = 0, action) => {
   }
 }
 
-export const pomodoroLength = (state = (1 * 60), action) => {
+export const pomodoroLength = (state = (25 * 60), action) => {
   switch (action.type) {
     case 'SET_POMODORO_LENGTH':
       return action.length;

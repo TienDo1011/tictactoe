@@ -1,10 +1,12 @@
-## Example calculator app
+## Pomodoro app
 
-`HMR Enabled`
-A basic calculator written with Javascript (ES2015), React.js, Redux, Immutable & Webpack.
-
-It doesn't do anything special, beyond what a normal calculator does.  It's just a simple demo to show how the technologies work together.
-
+A basic pomodoro written with Javascript (ES2015), React.js, Redux & Webpack.
+Function:
+..* Set break time
+..* Set Pomodoro time
+..* Set long break time
+..* Set Iteration
+ 
 ### Development
 
-To try this out, run `npm install`.  Then browse to `localhost:8080` in your browser.
+To try this out, run `npm install` & `npm start`.  Then browse to `localhost:8080` in your browser.
