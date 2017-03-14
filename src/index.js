@@ -30,7 +30,8 @@ const store = createStore(
     pomodoroLength: reducers.pomodoroLength,
     activity_type: reducers.activity_type,
     timer: reducers.timer
-  })
+  }),
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 );
 
 const render = () => {
