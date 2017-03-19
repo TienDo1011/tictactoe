@@ -15,7 +15,7 @@ module.exports = {
     // only- means to only hot reload for successful updates
 
 
-    './index.js'
+    './index.jsx'
     // the entry point of our app
   ],
   output: {
@@ -45,6 +45,14 @@ module.exports = {
 
   module: {
     rules: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        query: {
+          presets: ['react', 'es2015']
+        }
+      },
       {
         test: /\.js$/,
         use: [

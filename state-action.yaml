@@ -1,46 +1,10 @@
-Buttons:
+TicTacToe:
   state:
-    timer.is_active
-    # timer.is_finished
-    # activity_type
+    board []
+    hasDrawn
+    hasWon
+    nextPlayer
+    openSpaces
   action:
-    startTimer
-
-    pauseTimer
-    clearTimer
-LengthSetters:
-  state:
-    #timer.is_active || timer.paused
-    breakLength
-    pomodoroLength
-
-    longBreakLength
-    iterated/iteration
-  action:
-    setPomodoroLength
-    setBreakLength
-
-    setLongBreakLength
-    setIteration
-    setIterated
-Clock:
-  state:
-    # activity_type
-    timer.time
-    # timer.is_finished
-    # timer.paused
-  action:
-    setActivityType
-    # tickTimer
-    # finishTimer
-
-
-Store:
-  activity_type
-  pomodoroLength
-  breakLength
-  timer:
-    is_active
-    is_finished
-    paused
-    time
+    MOVE
+    RESET
