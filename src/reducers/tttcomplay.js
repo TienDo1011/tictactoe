@@ -30,6 +30,12 @@ export default class TTTComplay {
 
   static minimax(state, depth = 0) {
     if (state.hasWon || state.hasDrawn) {
+      if (state.hasWon) {
+        console.log('the opposite of this player won', state.nextPlayer);
+      }
+      if (state.hasDrawn) {
+        console.log('Drawn Drawn Drawn');
+      }
       return {
         score: this.score(state, depth),
       };

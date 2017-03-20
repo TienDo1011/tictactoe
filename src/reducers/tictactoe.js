@@ -22,8 +22,12 @@ export default class TicTacToe {
       [0, 4, 8], [2, 4, 6],             // main, anti-diagonal
     ];
     for (let i = 0; i < winningCombos.length; i += 1) {
-      if (winningCombos[i][0] === 2 && winningCombos[i][1] === 2
-        && winningCombos[i][2] === 2) {
+      if ((board[winningCombos[i][0]] === 2 &&
+            board[winningCombos[i][1]] === 2 &&
+            board[winningCombos[i][2]] === 2) ||
+            (board[winningCombos[i][0]] === 1 &&
+            board[winningCombos[i][1]] === 1 &&
+            board[winningCombos[i][2]] === 1)) {
         win = true;
         return win;
       }
@@ -52,13 +56,13 @@ export default class TicTacToe {
     };
     let idealMove;
     if (openSpaces >= 2) {
-      console.log('run here');
       if (openSpaces === 8) {
         idealMove = TTTComplay.openingMove(board);
       } else {
         idealMove = TTTComplay.idealMove(nextState);
       }
     }
+    console.log('idealMove', idealMove);
     board[idealMove] = 2;
     openSpaces -= 1;
     if (TicTacToe.hasWon(board, openSpaces)) {
