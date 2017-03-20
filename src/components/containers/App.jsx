@@ -25,10 +25,10 @@ function App(props) {
       <Grid>
         <Row>
           {props.board
-            .map((e) => {
+            .map((e, index) => {
               return (
                 <ButtonComponent
-                  key={shortid.generate()} onClick={props.move} player={e}
+                  key={shortid.generate()} onClick={props.move} player={e} index={index}
                 />
               )}
             )}

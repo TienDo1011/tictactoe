@@ -1,4 +1,4 @@
-import { TicTacToe } from './tictactoe';
+import TicTacToe from './tictactoe';
 
 const initialState = {
   board: [0, 0, 0, 0, 0, 0, 0, 0, 0],

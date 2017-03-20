@@ -53,9 +53,11 @@ export default class TTTComplay {
         openSpaces,
       };
       const score = this.minimax(nextState, depth);
-      scores.push(score);
+      scores.push(score.score);
       moves.push(move);
     });
+    console.log('scores=====>', scores);
+    console.log('moves====>', moves);
     if (state.nextPlayer === 1) {
       maxIndex = Math.max(...scores);
     } else {

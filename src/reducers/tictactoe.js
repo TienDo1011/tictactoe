@@ -52,6 +52,7 @@ export default class TicTacToe {
     };
     let idealMove;
     if (openSpaces >= 2) {
+      console.log('run here');
       if (openSpaces === 8) {
         idealMove = TTTComplay.openingMove(board);
       } else {
