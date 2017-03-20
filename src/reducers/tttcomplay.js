@@ -30,7 +30,9 @@ export default class TTTComplay {
 
   static minimax(state, depth = 0) {
     if (state.hasWon || state.hasDrawn) {
-      return this.score(state, depth);
+      return {
+        score: this.score(state, depth),
+      };
     }
     const scores = [];
     const moves = [];
