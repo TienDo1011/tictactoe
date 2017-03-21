@@ -1,13 +1,11 @@
-## Pomodoro app
+## TicTacToe app
 
-A basic pomodoro written with Javascript (ES2015), React.js, Redux & Webpack.
+A basic tictactoe written with Javascript (ES2015), React.js, Redux & Webpack.
 
 Function:
 
-* Set break time
-* Set Pomodoro time
-* Set long break time
-* Set Iteration
+* The AI will make a move after the user take it
+* Not fully functional, the AI is kind of stupid for now (the problem with Minimax recursion implementation), I'll come back to it later.
 
 ### Development
 
